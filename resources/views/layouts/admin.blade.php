@@ -26,7 +26,11 @@
     </head>
     <body>
         <header>
-            <h1><a href="#">メルカリ</a></h1>
+            <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
+            <div class="login">
+                <a href="#" role="button" class="btn btn-primary">ログイン</a>
+                <a href="#" role="button" class="btn btn-primary">新規会員登録</a>
+            </div>
         </header>
         <main class="py-4">
             @yield('content')

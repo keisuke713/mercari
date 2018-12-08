@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('mercari/top', 'Admin\MercariController@add' );
+    Route::get('mercari/top', 'Admin\MercariController@add' )->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
