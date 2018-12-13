@@ -26,4 +26,9 @@ class MercariController extends Controller
         return redirect('admin/mercari/top');
 
     }
+
+    public function sell()
+    {
+        return view('admin.mercari.sell');
+    }
 }

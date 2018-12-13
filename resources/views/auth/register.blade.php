@@ -89,9 +89,10 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="pay">
-                                    <option value="" slected="selected">選択してください</option>
+                                    <option value="" slected="selected">支払い方法</option>
                                     <option value="1">カード</option>
                                     <option value="2">代引き</option>
+                                    <option value="3">コンビニ支払い</option>
                                 </select>
                             </div>
                         </div>

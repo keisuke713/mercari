@@ -29,7 +29,6 @@
             <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
             @if(Auth::check())
                 <div class="login">
-                    <a href="{{ action('Admin\MercariController@own') }}" role="button" class="btn btn-primary">マイページ</a>
                     <a href="{{ action('Admin\MercariController@sell') }}" role="button" class="btn btn-primary">出品する</a>
                 </div>
             @else
