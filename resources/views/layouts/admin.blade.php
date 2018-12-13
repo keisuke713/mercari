@@ -27,10 +27,17 @@
     <body>
         <header>
             <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
-            <div class="login">
-                <a href="#" role="button" class="btn btn-primary">ログイン</a>
-                <a href="#" role="button" class="btn btn-primary">新規会員登録</a>
-            </div>
+            @if(Auth::check())
+                <div class="login">
+                    <a href="{{ action('Admin\MercariController@own') }}" role="button" class="btn btn-primary">マイページ</a>
+                    <a href="#" role="button" class="btn btn-primary">出品する</a>
+                </div>
+            @else
+                <div class="login">
+                    <a href="/login" role="button" class="btn btn-primary">ログイン</a>
+                    <a href="/register" role="button" class="btn btn-primary">新規会員登録</a>
+                </div>
+            @endif
         </header>
         <main class="py-4">
             @yield('content')

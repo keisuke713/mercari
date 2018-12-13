@@ -79,4 +79,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showLoginForm()
+    {
+        session(['url.intended' => $_SERVER['HTTP_REFERER']]);
+        return view('auth.login');
+    }
 }
