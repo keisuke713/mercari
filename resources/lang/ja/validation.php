@@ -151,7 +151,12 @@ return [
         'address' => '住所',
         'pay' => '支払い方法',
         'email' => 'メールアドレス',
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'title' => '商品名',
+        'category' => 'カテゴリー',
+        'price' => '値段',
+        'body' => '説明',
+        'image_path' => '画像'
 
     ],
 

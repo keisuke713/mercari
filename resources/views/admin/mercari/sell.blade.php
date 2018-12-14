@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>出品</h2>
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="{{ action('Admin\MercariController@create') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -30,18 +30,20 @@
                         <label for="category" class="col-md-2">{{ __('カテゴリー') }}</label>
 
                         <div class="col-md-9">
-                            <select class="form-control" name="pay">
+                            <select class="form-control" name="category">
                                 <option value="" slected="selected">カテゴリー</option>
                                 <option value="1">服</option>
                                 <option value="2">靴</option>
                                 <option value="3">帽子</option>
+                                <option value="4">食材</option>
+                                <option value="5">その他</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="price">値段</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="title" value="{{ old('price') }}">
+                            <input type="number" class="form-control" name="price" value="{{ old('price') }}">
                         </div>
                     </div>
                     <div class="form-group row">
