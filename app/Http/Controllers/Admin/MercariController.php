@@ -10,9 +10,10 @@ use App\Product;
 
 class MercariController extends Controller
 {
-    public function add()
+    public function add(Request $request)
     {
-        return view('admin.mercari.top');
+        $posts = Product::orderBy('id', 'DESC')->take(3)->get();
+        return view('admin.mercari.top', ['posts' => $posts]);
     }
 
     public function own(Request $request)
@@ -52,9 +53,18 @@ class MercariController extends Controller
         unset($form['_token']);
         unset($form['image']);
 
+        $product->fill($form);
         $product->save();
 
-        return view('admin/mercari/top');
+        return redirect('admin/mercari/top');
 
     }
+
+    public function detail(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        return view('admin.mercari.detail', ['product' => $product]);
+    }
+
 }

@@ -16,3 +16,19 @@ h1 {
     font-size: xx-large;
     width: 100%;
 }
+
+.new {
+    font-size: xx-large;
+}
+
+.product {
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    margin: 2em 0;
+    font-weight: bold;
+    border: solid 3px #000000;
+}
+
+.name {
+    display: inline;
+}
