@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
+use App\User;
 use App\Product;
 
 class MercariController extends Controller
@@ -65,6 +67,18 @@ class MercariController extends Controller
         $product = Product::find($request->id);
 
         return view('admin.mercari.detail', ['product' => $product]);
+    }
+
+    public function edit(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        return view('admin.mercari.edit', ['product' => $prodouct]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, Product::$product)
     }
 
 }

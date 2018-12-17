@@ -29,7 +29,12 @@ h1 {
   border: solid 3px #000000;
 }
 
-.name {
-  display: inline;
+.detail {
+  font-size: 30px;
+  display: inline-block;
+}
+
+.image img {
+  width: 300px;
 }
 

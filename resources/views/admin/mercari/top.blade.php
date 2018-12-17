@@ -12,10 +12,10 @@
                             <img src="{{ asset('storage/image/'. $product->image_path) }}">
                         </div>
                         <div class="name">
-                            {{ "商品名 ".$product->name }}
+                            {{ "商品名:".$product->name }}
                         </div>
                         <div class="price">
-                            {{ "値段 ".$product->price."円" }}
+                            {{ "値段:".$product->price."円" }}
                         </div>
                           <a href="{{ action('Admin\MercariController@detail', ['id' => $product->id]) }}" class="btn btn-primary">詳細</a>
                     </div>
