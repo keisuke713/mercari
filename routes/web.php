@@ -22,6 +22,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('mercari/sell', 'Admin\MercariController@sell');
     Route::post('mercari/sell', 'Admin\MercariController@create');
     Route::get('mercari/detail', 'Admin\MercariController@detail');
+    Route::get('mercari/edit', 'Admin\MercariController@edit');
+    Route::post('mercari/edit', 'Admin\MercariController@update');
+    Route::get('mercari/delete', 'Admin\MercariController@delete');
 });
 
 Auth::routes();

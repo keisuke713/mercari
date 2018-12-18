@@ -65,20 +65,42 @@ class MercariController extends Controller
     public function detail(Request $request)
     {
         $product = Product::find($request->id);
+        $user = User::find($product->user_id);
+        var_dump($user);
 
-        return view('admin.mercari.detail', ['product' => $product]);
+        return view('admin.mercari.detail', ['product' => $product, 'user' => $user]);
     }
 
     public function edit(Request $request)
     {
         $product = Product::find($request->id);
 
-        return view('admin.mercari.edit', ['product' => $prodouct]);
+        return view('admin.mercari.edit', ['product_form' => $product]);
     }
 
     public function update(Request $request)
     {
-        $this->validate($request, Product::$product)
+        $this->validate($request, Product::$rules);
+
+        $product = Product::find($request->id);
+        $product_form = $request->all();
+        $product->user_id = Auth::user()->id;
+
+        unset($product_form['_token']);
+
+        $product->fill($product_form)->save();
+        $user = User::find($product->user_id);
+
+        return view('admin.mercari.detail', ['product' => $product, 'user' => $user]);
+    }
+
+    public function delete(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        $product->delete();
+
+        return redirect('admin/mercari/top');
     }
 
 }

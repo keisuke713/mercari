@@ -15,7 +15,7 @@
                         {{ "商品名:".$product->name }}
                     </div>
                     <div class="user">
-                        {{ "出品者:".$product->user->name }}
+                        {{ "出品者:".$user->name }}
                     </div>
                     <div class="time">
                         {{ "出品日時:".$product->created_at }}
@@ -33,8 +33,8 @@
             <div class="detail">
                 <div class="col-md-10">
                     @if(Auth::user()->id == $product->user_id)
-                        <a href="#" class="btn btn-primary">編集する</a>
-                        <a href="#" class="btn btn-primary">削除する</a>
+                        <a href="{{ action('Admin\MercariController@edit', ['id' => $product->id]) }}" class="btn btn-primary">編集する</a>
+                        <a href="{{ action('Admin\MercariController@delete', ['id' => $product->id]) }}" class="btn btn-primary">削除する</a>
                     @else
                         <a href="#" class="btn btn-primary">お気に入りにする</a>
                         <a href="#" class="btn btn-primary">コメントする</a>
