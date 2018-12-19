@@ -27,6 +27,18 @@
     <body>
         <header>
             <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
+            <form action="{{ action('Admin\MercariController@index') }}" method="get">
+                <div class="form-group row">
+                    <label class="col-md-2">商品名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" name="pro_name" value={{ $pro_name ?? '' }}>
+                    </div>
+                    <div class="col-md-2">
+                        {{ csrf_field() }}
+                        <input type="submit" class="btn btn-primary" value="検索">
+                    </div>
+                </div>
+            </form>
             @if(Auth::check())
                 <div class="login">
                     <a href="{{ action('Admin\MercariController@own') }}" role="button" class="btn btn-primary">マイページ</a>

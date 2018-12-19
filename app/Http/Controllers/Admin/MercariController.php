@@ -20,8 +20,9 @@ class MercariController extends Controller
 
     public function own(Request $request)
     {
-        $user = Auth::user();
-        return view('admin.mercari.mypage', ['user' => $user]);
+        
+
+        return view('admin.mercari.mypage');
     }
 
     public function logout()
@@ -55,6 +56,7 @@ class MercariController extends Controller
         unset($form['_token']);
         unset($form['image']);
 
+
         $product->fill($form);
         $product->save();
 
@@ -66,7 +68,6 @@ class MercariController extends Controller
     {
         $product = Product::find($request->id);
         $user = User::find($product->user_id);
-        var_dump($user);
 
         return view('admin.mercari.detail', ['product' => $product, 'user' => $user]);
     }
@@ -101,6 +102,16 @@ class MercariController extends Controller
         $product->delete();
 
         return redirect('admin/mercari/top');
+    }
+
+    public function index(Request $request)
+    {
+        $pro_name = $request->pro_name;
+        $products = Product::where('name', $pro_name)->get();
+
+
+
+        return view('admin.mercari.index', ['products' => $products, 'pro_name' => $pro_name ]);
     }
 
 }
