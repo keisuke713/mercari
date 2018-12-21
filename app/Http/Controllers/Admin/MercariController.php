@@ -108,9 +108,27 @@ class MercariController extends Controller
         $pro_name = $request->pro_name;
         $products = Product::where('name', $pro_name)->get();
 
-
-
-        return view('admin.mercari.index', ['products' => $products, 'pro_name' => $pro_name ]);
+        return view('admin.mercari.index', ['products' => $products]);
     }
 
+    public function refine()
+    {
+        return view('admin.mercari.refine');
+    }
+
+
+    public function serch(Request $request)
+    {
+        $pro_name = $request->pro_name;
+        $pro_category = $request->pro_category;
+        $pro_min = $request->pro_min;
+        $pro_max = $request->pro_max;
+
+        $products = Product::where('name', $pro_name)
+                ->where('category', $pro_category)
+                ->whereBetween('price', [$pro_min, $pro_max])
+                ->get();
+
+        return view('admin.mercari.serch', ['products' => $products,]);
+    }
 }

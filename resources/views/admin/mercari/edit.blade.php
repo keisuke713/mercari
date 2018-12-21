@@ -40,11 +40,11 @@
                     <div class="col-md-9">
                         <select class="form-control" name="category">
                             <option value="" slected="selected">カテゴリー</option>
-                            <option value="1">服</option>
-                            <option value="2">靴</option>
-                            <option value="3">帽子</option>
-                            <option value="4">食材</option>
-                            <option value="5">その他</option>
+                            <option value="服">服</option>
+                            <option value="靴">靴</option>
+                            <option value="帽子">帽子</option>
+                            <option value="野菜">野菜</option>
+                            <option value="その他">その他</option>
                         </select>
                     </div>
                 </div>

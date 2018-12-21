@@ -6,7 +6,7 @@
     <div class="row">
         <h2>検索結果一覧</h2>
         <div class="col-md-2">
-            <a href="#" class="btn btn-primary">詳細検索</a>
+            <a href="{{ action('Admin\MercariController@refine') }}" class="btn btn-primary">詳細検索</a>
         </div>
         <div class="new col-md-10">
             @foreach($products as $product)
