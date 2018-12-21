@@ -20,7 +20,7 @@
         <th>出品した商品一覧</th>
             @if( Auth::user()->products != NULL)
                 @foreach( Auth::user()->products as $product)
-                    <td><a href={{ action('Admin\MercariController@detail', ['id' => $product->id]) }}>{{ $product->name }}</a></td>
+                    <td><a href="{{ action('Admin\MercariController@detail', ['id' => $product->id]) }}">{{ $product->name }}</a></td>
                 @endforeach
             @else
                 <h5>出品中の商品はありません</h5>

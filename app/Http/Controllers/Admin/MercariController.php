@@ -20,7 +20,6 @@ class MercariController extends Controller
 
     public function own(Request $request)
     {
-        
 
         return view('admin.mercari.mypage');
     }
