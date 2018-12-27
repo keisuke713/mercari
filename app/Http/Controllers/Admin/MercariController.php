@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Product;
+use App\Like;
 
 class MercariController extends Controller
 {
@@ -130,5 +131,31 @@ class MercariController extends Controller
                 ->get();
 
         return view('admin.mercari.serch', ['products' => $products,]);
+    }
+
+    public function like(Request $request)
+    {
+        $like = new Like;
+
+        $like->user_id = Auth::user()->id;
+        $like->product_id = $request->id;
+
+        $product = Product::find($request->id);
+        $user = User::find($product->user_id);
+
+        $like->save();
+
+        return redirect('admin/mercari/mypage');
+    }
+
+    public function release(Request $request)
+    {
+          $like = Like::where('user_id', Auth::user()->id)
+                  ->where('product_id', $request->id);
+
+          $like->delete();
+
+
+          return redirect('admin/mercari/mypage');
     }
 }

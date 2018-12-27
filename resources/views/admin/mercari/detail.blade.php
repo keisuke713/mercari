@@ -36,7 +36,11 @@
                         <a href="{{ action('Admin\MercariController@edit', ['id' => $product->id]) }}" class="btn btn-primary">編集する</a>
                         <a href="{{ action('Admin\MercariController@delete', ['id' => $product->id]) }}" class="btn btn-primary">削除する</a>
                     @else
-                        <a href="#" class="btn btn-primary">お気に入りにする</a>
+                        @if($product->likes()->where('user_id', Auth::user()->id)->count() == 1)
+                            <a href="{{ action('Admin\MercariController@release', ['id' => $product->id]) }}" class="btn btn-primary">いいねを解除する</a>
+                        @else
+                            <a href="{{ action('Admin\MercariController@like', ['id' => $product->id]) }}" class="btn btn-primary">いいねする</a>
+                        @endif
                         <a href="#" class="btn btn-primary">コメントする</a>
                         <a href="#" class="btn btn-primary">購入する</a>
                     @endif

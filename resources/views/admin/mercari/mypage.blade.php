@@ -28,7 +28,13 @@
     </tr>
     <tr>
         <th>お気に入り商品一覧</th>
-        <td></td>
+            @if( Auth::user()->likes != NULL)
+                @foreach( Auth::user()->likes as $like)
+                    <td><a href="{{ action('Admin\MercariController@detail', ['id' => $like->product_id]) }}">{{ $like->product->name }}</a></td>
+                @endforeach
+            @else
+                <h5>いいねした商品はありません</h5>
+            @endif
     </tr>
 </table>
 <div>

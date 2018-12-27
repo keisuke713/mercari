@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('mercari/index', 'Admin\MercariController@index');
     Route::get('mercari/refine', 'Admin\MercariController@refine');
     Route::get('mercari/serch', 'Admin\MercariController@serch');
+    Route::get('mercari/like', 'Admin\MercariController@like');
+    Route::get('mercari/release', 'Admin\MercariController@release');
 });
 
 Auth::routes();
