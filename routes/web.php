@@ -30,6 +30,12 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('mercari/serch', 'Admin\MercariController@serch');
     Route::get('mercari/like', 'Admin\MercariController@like');
     Route::get('mercari/release', 'Admin\MercariController@release');
+    Route::get('mercari/comment', 'Admin\MercariController@comment');
+    Route::post('mercari/comment', 'Admin\MercariController@contribute');
+    Route::get('mercari/list', 'Admin\MercariController@list');
+    Route::get('mercari/question', 'Admin\MercariController@question');
+    Route::get('mercari/answer', 'Admin\MercariController@answer');
+    Route::post('mercari/answer', 'Admin\MercariController@solve');
 });
 
 Auth::routes();

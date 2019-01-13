@@ -35,13 +35,18 @@
                     @if(Auth::user()->id == $product->user_id)
                         <a href="{{ action('Admin\MercariController@edit', ['id' => $product->id]) }}" class="btn btn-primary">編集する</a>
                         <a href="{{ action('Admin\MercariController@delete', ['id' => $product->id]) }}" class="btn btn-primary">削除する</a>
+                        <a href="{{ action('Admin\MercariController@question', ['id' => $product->id]) }}" class="btn btn-primary">質問一覧</a>
                     @else
                         @if($product->likes()->where('user_id', Auth::user()->id)->count() == 1)
                             <a href="{{ action('Admin\MercariController@release', ['id' => $product->id]) }}" class="btn btn-primary">いいねを解除する</a>
                         @else
                             <a href="{{ action('Admin\MercariController@like', ['id' => $product->id]) }}" class="btn btn-primary">いいねする</a>
                         @endif
-                        <a href="#" class="btn btn-primary">コメントする</a>
+                            @if($product->comments()->where('user_id', Auth::user()->id)->count() == 0)
+                                <a href="{{ action('Admin\MercariController@comment', ['id' => $product->id]) }}" class="btn btn-primary">質問する</a>
+                            @else
+                                <a href="{{ action('Admin\MercariController@list', ['id' => $product->id]) }}" class="btn btn-primary">出品者からの返信</a>
+                            @endif
                         <a href="#" class="btn btn-primary">購入する</a>
                     @endif
                 </div>

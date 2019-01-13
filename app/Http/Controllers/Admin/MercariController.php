@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Product;
 use App\Like;
+use App\Comment;
+use App\Answer;
 
 class MercariController extends Controller
 {
@@ -157,5 +159,65 @@ class MercariController extends Controller
 
 
           return redirect('admin/mercari/mypage');
+    }
+
+    public function comment(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        return view('admin.mercari.comment', ['product' => $product]);
+    }
+
+    public function contribute(Request $request)
+    {
+        $comment = new comment;
+
+        $comment->title = $request->title;
+        $comment->body = $request->body;
+        $comment->user_id = Auth::user()->id;
+        $comment->product_id = $request->id;
+
+        $comment->save();
+
+        return redirect('admin/mercari/mypage');
+    }
+
+    public function list(Request $request)
+    {
+        $product = Product::find($request->id);
+        $comment = Comment::where('product_id', $request->id)
+                          ->where('user_id', Auth::user()->id)
+                          ->first();
+
+
+
+        return view('admin.mercari.list', ['product' => $product, 'comment' => $comment]);
+    }
+
+    public function question(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        return view('admin.mercari.question', ['product' => $product]);
+    }
+
+    public function answer(Request $request)
+    {
+        $comment = Comment::find($request->id);
+
+        return view('admin.mercari.answer', ['comment' => $comment]);
+    }
+
+    public function solve(Request $request)
+    {
+        $answer = new Answer;
+
+        $answer->user_id = Auth::user()->id;
+        $answer->comment_id = $request->id;
+        $answer->body = $request->body;
+
+        $answer->save();
+
+        return redirect('admin/mercari/mypage');
     }
 }
