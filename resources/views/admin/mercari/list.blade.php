@@ -31,21 +31,23 @@
     </div>
     <div class="row">
         <div class="col-md-10">
-            @if($comment->answer->count() == 0)
-                <div class="title">
-                    <h4>出品者からの返信はまだありません</h4>
-                </div>
-            @else
-                <div class="title">
-                    <h4>出品者からの返信</h4>
-                </div>
-                <div class="time">
-                    {{ "返信日時:".$comment->answer->created_at }}
-                </div>
-                <div class="body">
-                    {{ "本文:".$comment->answer->body }}
-                </div>
-            @endif
+            <div class="answer">
+                @if($comment->answer->count() == 0)
+                    <div class="title">
+                        <h4>出品者からの返信はまだありません</h4>
+                    </div>
+                @else
+                    <div class="title">
+                        <h4>出品者からの返信</h4>
+                    </div>
+                    <div class="time">
+                        {{ "返信日時:".$comment->answer->created_at }}
+                    </div>
+                    <div class="body">
+                        {{ "本文:".$comment->answer->body }}
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 </div>
