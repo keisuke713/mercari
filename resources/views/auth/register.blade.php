@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="post" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
 
                             <div class="col-md-6">
                                 <input id="post" type="number" class="form-control{{ $errors->has('post') ? ' is-invalid' : '' }}" name="post" value="{{ old('post') }}" required autofocus>
