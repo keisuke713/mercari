@@ -26,7 +26,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
+            <h1><a href="{{ action('Admin\MercariController@add') }}">ネルカリ</a></h1>
         </header>
         <main class="py-4">
             @yield('content')

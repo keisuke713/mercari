@@ -26,7 +26,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="{{ action('Admin\MercariController@add') }}">メルカリ</a></h1>
+            <h1><a href="{{ action('Admin\MercariController@add') }}">ネルカリ</a></h1>
             <form action="{{ action('Admin\MercariController@index') }}" method="get">
                 <div class="form-group row">
                     <label class="col-md-2">商品名</label>
