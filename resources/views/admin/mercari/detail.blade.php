@@ -42,12 +42,29 @@
                         @else
                             <a href="{{ action('Admin\MercariController@like', ['id' => $product->id]) }}" class="btn btn-primary">いいねする</a>
                         @endif
-                            @if($product->comments()->where('user_id', Auth::user()->id)->count() == 0)
-                                <a href="{{ action('Admin\MercariController@comment', ['id' => $product->id]) }}" class="btn btn-primary">質問する</a>
-                            @else
-                                <a href="{{ action('Admin\MercariController@list', ['id' => $product->id]) }}" class="btn btn-primary">出品者からの返信</a>
-                            @endif
-                        <a href="#" class="btn btn-primary">購入する</a>
+                        @if($product->comments()->where('user_id', Auth::user()->id)->count() == 0)
+                            <a href="{{ action('Admin\MercariController@comment', ['id' => $product->id]) }}" class="btn btn-primary">質問する</a>
+                        @else
+                            <a href="{{ action('Admin\MercariController@list', ['id' => $product->id]) }}" class="btn btn-primary">出品者からの返信</a>
+                        @endif
+                        @if($store == NULL)
+                            <form action="/charge" method="post">
+                                {{ csrf_field() }}
+                                <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="pk_test_QlwNXP8MUtNfx48jKBr4crVv"
+                                    data-amount="100"
+                                    data-name="TEST"
+                                    data-description="TESTTEST"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                    data-locale="ja"
+                                    data-currency="jpy">
+                                </script>
+                                <input type="hidden" name="product" value="{{$product->id}}">
+                            </form>
+                        @else
+                            <h5>売り切れました。</h5>
+                        @endif
                     @endif
                 </div>
             </div>

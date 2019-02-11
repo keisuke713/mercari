@@ -12,6 +12,7 @@ use App\Product;
 use App\Like;
 use App\Comment;
 use App\Answer;
+use App\Store;
 
 class MercariController extends Controller
 {
@@ -70,8 +71,9 @@ class MercariController extends Controller
     {
         $product = Product::find($request->id);
         $user = User::find($product->user_id);
+        $store = Store::where('product_id', $product->id)->first();
 
-        return view('admin.mercari.detail', ['product' => $product, 'user' => $user]);
+        return view('admin.mercari.detail', ['product' => $product, 'user' => $user, 'store' => $store]);
     }
 
     public function edit(Request $request)

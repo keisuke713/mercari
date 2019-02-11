@@ -57,47 +57,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('郵便番号') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="post" type="number" class="form-control{{ $errors->has('post') ? ' is-invalid' : '' }}" name="post" value="{{ old('post') }}" required autofocus>
-
-                                @if ($errors->has('post'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('post') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住所') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
-
-                                @if ($errors->has('address'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="pay" class="col-md-4 col-form-label text-md-right">{{ __('支払い方法') }}</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" name="pay">
-                                    <option value="" slected="selected">支払い方法</option>
-                                    <option value="1">カード</option>
-                                    <option value="2">代引き</option>
-                                    <option value="3">コンビニ支払い</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
 
                             <div class="col-md-6">

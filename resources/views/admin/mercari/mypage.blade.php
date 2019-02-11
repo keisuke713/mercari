@@ -9,14 +9,6 @@
         <td>{{ Auth::user()->name }}</td>
     </tr>
     <tr>
-        <th>住所</th>
-        <td>{{ Auth::user()->address }}</td>
-    </tr>
-    <tr>
-        <th>支払い方法</th>
-        <td>{{ Auth::user()->pay }}</td>
-    </tr>
-    <tr>
         <th>出品した商品一覧</th>
             @if( Auth::user()->products != NULL)
                 @foreach( Auth::user()->products as $product)

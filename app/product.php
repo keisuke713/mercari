@@ -36,4 +36,9 @@ class product extends Model
   {
       return $this->hasMany('App\Answer');
   }
+
+  public function store()
+  {
+      return $this->belongsTo('App\Store');
+  }
 }
